@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            color: red;
+            font-style: italic;
+            font-weight: bolder;
+            list-style: none;
+        }
+        
+        li {
+            color: black;
+            font-style: normal;
+            font-weight: normal;
+        }
+
+    </style>
+</head>
+
+<body>
+    <script>
+
+        function displayUl(data) {
+            const ul = document.createElement('ul');
+            ul.innerHTML = 'POSTS';
+            document.body.appendChild(ul);
+            data.forEach(element => {
+                const li= document.createElement('li');
+                li.innerHTML = ('id: '+ element.id);
+                ul.appendChild(li);
+            });
+        }
+
+        fetch('http://localhost:9000/api/post')
+            .then(res => res.json())
+            .then(data => displayUl(data));
+
+    </script>
+</body>
+
+</html>

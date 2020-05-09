@@ -1,3 +1,4 @@
+var cors = require('cors') 
 const express = require('express');
 const path = require('path');
 const http = require('http');
@@ -7,6 +8,8 @@ const posts = require('./posts.controler');
 const users = require('./users.controler');
 
 const app = express();
+
+app.use(cors())
 
 const baseDir = path.resolve(__dirname, '../');
 

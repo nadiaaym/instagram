@@ -52,7 +52,7 @@ class DbService {
             })
             .then((updated) => {
                 const fileName = this.dict[modelName];
-                this.fileService.write(fileName, JSON.stringify(updated));
+                return this.fileService.write(fileName, JSON.stringify(updated));
             })
     }
 
@@ -60,10 +60,13 @@ class DbService {
         return this.get(modelName)
             .then(objects => {
                 const parsed = JSON.parse(objects);
-                const object = parsed.find(p => p.id === data.id);
-                if(object) {
-                    object = data;
+                let object = parsed.findIndex(p => p.id === data.id);
+                if(object !== undefined) {
+                    parsed[object] = data;
                 }
+                console.log('parsed: ', parsed);
+                console.log('ovbject: ', object);
+                console.log('data: ', data);
                 return parsed;
             })
             .then((updated) => {
