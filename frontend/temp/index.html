@@ -13,9 +13,16 @@
         }
         
         li {
-            color: black;
+            color: blue;
             font-style: normal;
             font-weight: normal;
+            border: 1px solid black;
+            width: fit-content;
+            height: fit-content;
+            margin: 5px;
+        }
+        span {
+            margin: 5px;
         }
 
     </style>
@@ -23,15 +30,19 @@
 
 <body>
     <script>
-
         function displayUl(data) {
             const ul = document.createElement('ul');
             ul.innerHTML = 'POSTS';
             document.body.appendChild(ul);
             data.forEach(element => {
                 const li= document.createElement('li');
-                li.innerHTML = ('id: '+ element.id);
+                const id = document.createElement('span');
+                const name = document.createElement('span');
+                id.innerHTML = ('id: '+ element.id);
+                name.innerHTML = ('name: '+ element.name);
                 ul.appendChild(li);
+                li.appendChild(id);
+                li.appendChild(name);
             });
         }
 

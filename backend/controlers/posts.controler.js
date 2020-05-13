@@ -5,8 +5,7 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/', (req, res) => {
-    console.log(req.body)
-    dbService.create(MODEL_NAMES.post, {id: "3"})
+    dbService.create(MODEL_NAMES.post, req.body)
         .then(posts => res.status(200).send("success"))
 });
 

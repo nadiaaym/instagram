@@ -30,6 +30,8 @@ class DbService {
         return this.get(modelName)
             .then((objects) => {
                 const parsed = JSON.parse(objects);
+                const lastId = parsed[parsed.length-1].id;
+                data.id = parseInt(lastId) + 1;
                 parsed.push(data)
                 return parsed;
             })
