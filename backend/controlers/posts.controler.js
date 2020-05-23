@@ -11,18 +11,18 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
     dbService.get(MODEL_NAMES.post)
-        .then(function(posts) {
+        .then(function (posts) {
             res.status(200).send(posts)
-        })    
-        });
+        })
+});
 
 router.delete('/:id', (req, res) => {
     dbService.delete(MODEL_NAMES.post, req.params.id)
-        .then(posts =>  res.status(200).send(posts))
+        .then(posts => res.status(200).send(posts))
 });
 
 router.put('/:id', (req, res) => {
-    dbService.update(MODEL_NAMES.post, {...req.body, id:req.params.id})
+    dbService.update(MODEL_NAMES.post, { ...req.body, id: req.params.id })
         .then(posts => res.status(200).send("updated"))
 });
 
